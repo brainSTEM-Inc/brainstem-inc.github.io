@@ -1,213 +1,212 @@
 body {
-    font-family: 'Trebuchet MS', sans-serif;
-    margin: 0px;
-    padding: 0px;
-    background: #ffffff;
+  background-color: lightgoldenrodyellow;
 }
 
-#header {
-    position: relative;
-    background: #563363;
-    width: 100%;
-    height: 250px;
-    text-align: center;
-    display: flex;
-    justify-content: flex-end;
+a {
+  color: goldenrod;
+  font-family: monospace;
+  font-size: 100%;
+  text-decoration: underline;
 }
 
-#header_image {
-    float: right;
-    height: 100%;
-    object-fit: cover;
-    overflow: hidden;
+li {
+  text-align: left;
+  font-family: cursive;
+  text-decoration: none;
+  color: darkgoldenrod;
 }
 
-#header_text {
-    color: white;
-    width: 100%;
-    max-width: 600px;
-    font-size: 50px;
-
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+h1 {
+  color: darkgoldenrod;
+  font-family: monospace;
+  text-align: center;
+  letter-spacing: 2.5px;
+  text-shadow: -1.5px 1.5px yellow;
+  text-decoration: underline;
+  font-size: 250%;
 }
 
-/* alright ima be honest here - i have no idea how this works; thanks stack overflow! */
-.fadegradientbottom {
+h2 {
+  color: darkgoldenrod;
+  background-color: gold ;
+  font-family: monospace;
+  text-align: center;
+  letter-spacing: 2.5px;
+  text-shadow: -1.5px 1.5px yellow;
+  text-decoration: underline;
+  font-size: 175%
+}
 
-    position:absolute;
-    bottom:0px;
-    left:0px;
-    width:100%;
-    height:50px;
+h3 {
+  color: goldenrod;
+  font-size: 100%;
+  font-family: sans-serif;
+  text-align: center;
+  letter-spacing: 1.5px;
+  text-decoration: underline;
+  text-shadow: -1.5px 1.5px yellow;
+}
 
-    background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%, #ffffff 100%); /* W3C */
+h6 {
+  font-family: serif;
+  font-size: 75%;
+  text-align: center;
+}
+
+p {
+  color: darkgoldenrod;
+  font-size: 100%;
+  font-family: cursive;
+  letter-spacing: 1px;
+}
+
+img {
+  padding: 5px;
+  background: gold;
+  border-radius: 10px;
+  border-style: dotted;
+  margin-right: auto;
+  margin-left: auto;
+  width: 75%;
+  text-align: center;
+  
+}
+
+.PhotoGallery {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin: 50px;
+  height: 200px;
+  width: auto;
+}
+
+.ImageCaption {
+  font-size: 100%;
+  font-family: serif; 
+  text-decoration: none;
+  color: black;
+  background-color: none;
+  text-shadow: 0px 0px transparent;
+  text-align: center;
+}
+
+.Question {
+  color: black;
+}
+
+.Answer {
+  color: lightgoldenrodyellow;
+}
+
+.HomeBanner {
+  background: url(DeathValleyCoverImage.jpg);
+}
+
+.PupfishImage {
+  width: 500px;
+  background-color: transparent;
+  border-style: solid;
+  border-color: darkgoldenrod;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+ 
+.FoodWebImage {
+  width: 750px;
+  background-color: transparent;
+  border-style: solid;
+  border-color: darkgoldenrod;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+style {
+  text-align: center;
+}
+
+.CompareContrast {
 
 }
 
-#profile_section {
-    margin-top: 50px;
-    margin-left: 75px;
-    margin-right: 150px;
+.header {
+  padding: 25px;
+  text-align: center;
+  background: goldenrod;
+  font-size: 50px;
+  border-radius: 25px;
+  border-style: double;
+  margin: 10px;
 }
 
-#profile_pic {
-    float: left;
-    width: 300px;
-    height: 300px;
-    /* border-width: 6px; */
-    /* border-radius: 20px; */
-    /* border-style: solid; */
-    /* border-color: #ffe9a8; */
+.EnergyRoleTable {
+  border: 1px solid darkgoldenrod;
+  background-color: palegoldenrod;
+  width: 500px;
+  height: 110px;
+  text-align: center;
+  font-family: cursive;
+  color: darkgoldenrod;
 }
 
-#profile_header {
-    font-size: 40px;
+.Embeds {
+  width: 100%;
 }
 
-#profile_color_strip {
-    margin-top: -25px;
-    margin-left: 300px;
-    margin-bottom: 40px;
-    width: 200px; height: 10px;
-    background-color: cornflowerblue;
+.PupfishCounts {
+  width: 250px;
 }
 
-#profile_text {
-    font-size: 25px;
+.ParagraphLinks {
+  color: darkgoldenrod;
+  font-size: 100%;
+  font-family: cursive;
+  letter-spacing: 1px;
+  text-decoration: underline;
 }
 
-#experience_section {
-    margin-top: 50px;
-    margin-left: 75px;
-    margin-right: 150px;
+.Links {
+  color: darkgoldenrod;
+  font-size: 25px;
+  font-family: monospace;
+  letter-spacing: 1px;
+  text-decoration: underline;
+  font-style: oblique;
 }
 
-#experience_header {
-    font-size: 40px;
+.dropbtn {
+  background-color: darkgoldenrod;
+  color: yellow;
+  padding: 25px;
+  font-size: 150%;
+  border: solid 2.5px;
+  font-family: monospace;
 }
 
-#experience_color_strip {
-    margin-top: -25px;
-    margin-bottom: 40px;
-    width: 250px; height: 10px;
-    background-color: cornflowerblue;
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-#experience_text {
-    font-size: 25px;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: goldenrod;
+  min-width: 150px;
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  z-index: 1;
 }
 
-
-#portfolio_section {
-    margin-top: 50px;
-    margin-left: 75px;
-    margin-right: 150px;
+.dropdown-content a {
+  color: yellow;
+  padding: 15px 15px;
+  text-decoration: underline;
+  display: block;
 }
 
-#portfolio_header {
-    font-size: 40px;
-}
+.dropdown-content a:hover {background-color: darkgoldenrod;}
 
-#portfolio_color_strip {
-    margin-top: -25px;
-    margin-bottom: 40px;
-    width: 250px; height: 10px;
-    background-color: cornflowerblue;
-}
+.dropdown:hover .dropdown-content {display: block;}
 
-#portfolio_description {
-    font-size: 25px;
-}
-
-.portfolio_project {
-    margin-left: 50px;
-    /* height: 300px; */
-
-    display: flex;
-    align-items: center;
-    justify-content: center
-}
-
-.portfolio_project_header {
-    font-size: 25px;
-}
-/*
-.portfolio_project_main {
-    
-}
-*/
-.portfolio_project_desc {
-    font-size: 20px;
-    margin-right: 50px;
-}
-
-.portfolio_project_image {
-    float: right;
-    width: 400px;
-    border-width: 6px;
-    border-style: solid;
-    border-color: cornflowerblue;
-}
-/*
-.portfolio_project_link {
-    color: cornflowerblue;
-}
-*/
-
-
-#links_section {
-    margin-top: 50px;
-    margin-left: 75px;
-    margin-right: 150px;
-}
-
-#links_header {
-    font-size: 40px;
-}
-
-#links_color_strip {
-    margin-top: -25px;
-    margin-bottom: 40px;
-    width: 500px; height: 10px;
-    background-color: cornflowerblue;
-}
-
-#links_description {
-    font-size: 25px;
-}
-
-.connection_link {
-    color: cornflowerblue;
-}
-
-
-#footer {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-#footer_image {
-    width: 100%;
-    object-fit: cover;
-    overflow: hidden;
-    background-position: center bottom;
-    top: 0;
-}
-
-
-.fadegradienttop {
-
-    position:absolute;
-    top:0px;
-    left:0px;
-    width:100%;
-    height:100px;
-
-    background: linear-gradient(to top,  rgba(0,0,0,0) 0%, #ffffff 100%); /* W3C */
-
-}
+.dropdown:hover .dropbtn {background-color: goldenrod;}
