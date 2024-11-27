@@ -27,14 +27,14 @@ h1 {
 }
 
 h2 {
-  color: darkgoldenrod;
-  background-color: gold ;
+  color: black;
+  /*background-color: gold ;*/
   font-family: monospace;
   text-align: center;
   letter-spacing: 2.5px;
-  text-shadow: -1.5px 1.5px yellow;
-  text-decoration: underline;
-  font-size: 175%
+  /*text-shadow: -1.5px 1.5px yellow;*/
+  /*text-decoration: underline;*/
+  font-size: 200%
 }
 
 h3 {
@@ -62,13 +62,13 @@ p {
 
 img {
   padding: 5px;
-  background: gold;
-  border-radius: 10px;
+  background: black;
+  border-radius: 5px;
   border-style: dotted;
   margin-right: auto;
   margin-left: auto;
-  width: 75%;
-  text-align: center;
+  width: 40%;
+  /*text-align: center;*/
   
 }
 
