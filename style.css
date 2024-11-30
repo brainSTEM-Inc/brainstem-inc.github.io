@@ -17,11 +17,11 @@ li {
 }
 
 h1 {
-  color: darkgoldenrod;
-  font-family: monospace;
-  text-align: center;
+  color: dodgerblue;
+  font-family: Helvetica, Arial, sans-serif;
+  /*text-align: center;*/
   letter-spacing: 2.5px;
-  text-shadow: -1.5px 1.5px yellow;
+  /*text-shadow: -1.5px 1.5px yellow;*/
   text-decoration: underline;
   font-size: 250%;
 }
@@ -54,10 +54,21 @@ h6 {
 }
 
 p {
-  color: darkgoldenrod;
+  color: dodgerblue;
   font-size: 100%;
-  font-family: cursive;
+  font-family: Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
+}
+
+.button {
+  /*background-color: #04AA6D; /* Green */*/
+  border: none;
+  color: dodgerblue;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 img {
