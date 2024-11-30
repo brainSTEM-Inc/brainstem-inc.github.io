@@ -60,7 +60,7 @@ p {
   letter-spacing: 1px;
 }
 
-button {
+.button {
   /*background-color: #04AA6D; /* Green */*/
   border: none;
   color: dodgerblue;
