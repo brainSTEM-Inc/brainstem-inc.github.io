@@ -9,5 +9,15 @@
     <button class="button" onclick="location.href='game.html';">Game</button>
     <h1>Continue the Phrase</h1>
     <p>A simple linguistics game that can be played by yourself, with friends, or with a computer (coming soon).</p>
+    <ol>
+      <li>Start with a suitable word.</li>
+      <li>Continue the phrase by adding a word that shares its leading characters with the previous word's trailing characters. They should have at least 3 characters in common.</li>
+      <li>Another way to continue the phrase without recycling the previous word's characters is to add another word that is a two-word phrase when combined with the previous word (or three-word phrase if the previous two words are disjoint). This can be the name of a person, movie, software, etc.</li>
+      <li>The objective of the game is to continue the phrase for as long as possible.</li>
+      <li>If the goal is n rounds (where each round consists of each player taking exactly one turn), each player gets n*0.2 (rounded down) "edits".</li>
+      <li>The player who uses the edit may change exactly one character anywhere in the entire phrase (typically in the previous player's word) to any other character and play their turn using the new phrase. Play continues using the new phrase.</li>
+      <li>The game is cooperative, such that a player may choose a simpler word so that the next player can continue the phrase.</li>
+      <li>To make the game more competitive, however, one can utilize a point system where the number of points each player gains on their turn is the number of characters they recycle from the previous player(s)'s word(s). Adding a word to create a phrase with the previous word(s) is considered as recycling all the characters in those words.</li>
+    </ol>
   </body>
 </html>
