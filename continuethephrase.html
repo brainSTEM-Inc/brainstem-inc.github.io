@@ -10,10 +10,7 @@
     <h1>Continue the Phrase</h1>
     <h1>A demonstration of how to access a Text Field</h3>
     
-    <input type="text" id="userWord" value="">
-    
-    <p>Click the "Try it" button to get the text in the text field.</p>
-    
+    <input type="text" pattern="abcdefghijklmnopqrstuvwxyz" id="userWord" value="">
     <button onclick="addtoPhrase()">Add</button>
     
     <p id="newPhrase"></p>
@@ -24,6 +21,12 @@
       var x = document.getElementById("userWord").value;
       phrase+=x;
       document.getElementById("newPhrase").innerHTML = phrase;
+      document.getElementById("userWord").value="";
+  
+    }
+    function checkWord() {
+    }
+    function getWord() {
     }
     </script>
   </body>
