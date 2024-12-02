@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>  
+  <body style="background-color: white;">
+    <button class="button" onclick="location.href='index.html';">Home</button>
+    <button class="button" onclick="location.href='snc.html';">Science and Cynicism Comics</button>
+    <button class="button" onclick="location.href='game.html';">Game</button>
+    <h1>Continue the Phrase</h1>
+    <h1>A demonstration of how to access a Text Field</h3>
+    
+    <input type="text" id="userWord" value="">
+    
+    <p>Click the "Try it" button to get the text in the text field.</p>
+    
+    <button onclick="addtoPhrase()">Add</button>
+    
+    <p id="newPhrase"></p>
+    
+    <script>
+    var phrase = "";
+    function addtoPhrase() {
+      var x = document.getElementById("userWord").value;
+      phrase+=x;
+      document.getElementById("newPhrase").innerHTML = phrase;
+    }
+    </script>
+  </body>
+</html>
