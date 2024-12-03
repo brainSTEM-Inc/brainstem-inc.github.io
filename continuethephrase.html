@@ -7,27 +7,38 @@
     <button class="button" onclick="location.href='index.html';">Home</button>
     <button class="button" onclick="location.href='snc.html';">Science and Cynicism Comics</button>
     <button class="button" onclick="location.href='game.html';">Game</button>
+    
     <h1>Continue the Phrase</h1>
     <h1>A demonstration of how to access a Text Field</h3>
-    
+    <p>Starting word is "aquitard".</p>
     <input type="text" pattern="abcdefghijklmnopqrstuvwxyz" id="userWord" value="">
     <button onclick="addtoPhrase()">Add</button>
-    
     <p id="newPhrase"></p>
+    <p id="points"></p>
+    <p id="totalPoints"></p>
     
     <script>
-    var phrase = "";
+    var phrase = "aquatard";
+    var totalPoints = 0;
     function addtoPhrase() {
-      var x = document.getElementById("userWord").value;
-      phrase+=x;
+      var userWord = document.getElementById("userWord").value;
+      var points=3;
+      while (phrase.substring(phrase.length-points)!==userWord.substring(0,points)) {
+      	points+=1;
+      }
+      phrase+=userWord.substring(points);
+      totalPoints+=points;
       document.getElementById("newPhrase").innerHTML = phrase;
+      document.getElementById("points").innerHTML = "+"+points+" pts";
+      document.getElementById("totalPoints").innerHTML = "Total points: "+totalPoints+" pts";
       document.getElementById("userWord").value="";
-  
+  	
     }
     function checkWord() {
     }
     function getWord() {
     }
     </script>
+    
   </body>
 </html>
