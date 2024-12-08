@@ -11,14 +11,39 @@
     <h1>Continue the Phrase</h1>
     <p>Starting word is "aquitard".</p>
     <input type="text" pattern="abcdefghijklmnopqrstuvwxyz" id="userWord" value="">
-    <button onclick="addtoPhrase()">Add</button>
+    <button id="addButton" onclick="startPhrase()">Start</button>
+    <button onclick="editPhrase()">Edit</button>
     <p id="newPhrase"></p>
     <p id="points"></p>
     <p id="totalPoints"></p>
     
     <script>
-    var phrase = "aquatard";
+    var phrase = "";
     var totalPoints = 0;
+    var hasStarted=false;
+    function startPhrase() {
+      if (!hasStarted) {
+      	var userWord = document.getElementById("userWord").value;
+        var points=0;
+        phrase+=userWord;
+        //document.getElementById("newPhrase").innerHTML = phrase;
+        document.getElementById("points").innerHTML = "+"+points+" pts";
+        document.getElementById("totalPoints").innerHTML = "Total points: "+totalPoints+" pts";
+        document.getElementById("userWord").value="";
+        for (let i = 0; i < phrase.length; i++) {
+          let x = document.createElement("BUTTON");
+          let t = document.createTextNode(phrase.charAt(i));
+          x.appendChild(t);
+          document.body.appendChild(x)
+        }
+        hasStarted=true;
+        document.getElementById("addButton").innerHTML = "Add";
+      }
+      else {
+      	addtoPhrase();
+      }
+    }
+
     function addtoPhrase() {
       var userWord = document.getElementById("userWord").value;
       var points=3;
@@ -27,15 +52,23 @@
       }
       phrase+=userWord.substring(points);
       totalPoints+=points;
-      document.getElementById("newPhrase").innerHTML = phrase;
+      //document.getElementById("newPhrase").innerHTML = phrase;
       document.getElementById("points").innerHTML = "+"+points+" pts";
       document.getElementById("totalPoints").innerHTML = "Total points: "+totalPoints+" pts";
       document.getElementById("userWord").value="";
+      for (let i = 0; i < userWord.length-points; i++) {
+        let x = document.createElement("BUTTON");
+        let t = document.createTextNode(userWord.charAt(points+i));
+        x.appendChild(t);
+        document.body.appendChild(x);
+	  }
   	
     }
     function checkWord() {
     }
     function getWord() {
+    }
+    function editPhrase() {
     }
     </script>
     
