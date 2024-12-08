@@ -21,24 +21,31 @@
     var phrase = "";
     var totalPoints = 0;
     var hasStarted=false;
+    const usedWords=[];
     function startPhrase() {
       if (!hasStarted) {
       	var userWord = document.getElementById("userWord").value;
         var points=0;
         if (userWord.length<3) {
-        	document.getElementById("points").innerHTML = "Invalid word";
+          document.getElementById("points").innerHTML = "Word less than 3 letters";
+          points=0;
+        }
+        else if (usedWords.includes(userWord)) {
+          document.getElementById("points").innerHTML = "Word already used";
+          points=0;
         }
         else {
           phrase+=userWord;
+          usedWords.push(userWord);
           //document.getElementById("newPhrase").innerHTML = phrase;
-          //document.getElementById("points").innerHTML = "+"+points+" pts";
+          document.getElementById("points").innerHTML = "Good luck!";
           document.getElementById("totalPoints").innerHTML = "Total points: "+totalPoints+" pts";
           document.getElementById("userWord").value="";
           for (let i = 0; i < phrase.length; i++) {
             let x = document.createElement("BUTTON");
             let t = document.createTextNode(phrase.charAt(i));
             x.appendChild(t);
-            document.body.appendChild(x)
+            document.body.appendChild(x);
           }
           hasStarted=true;
           document.getElementById("addButton").innerHTML = "Add";
@@ -52,15 +59,24 @@
     function addtoPhrase() {
       var userWord = document.getElementById("userWord").value;
       var points=3;
-      while (userWord.length>=3 && points<=phrase.length && phrase.substring(phrase.length-points)!==userWord.substring(0,points)) {
+      while (!(usedWords.includes(userWord)) && userWord.length>=3 && points<=phrase.length && phrase.substring(phrase.length-points)!==userWord.substring(0,points)) {
       	points+=1;
       }
       //document.getElementById("newPhrase").innerHTML = phrase;
-      if (userWord.length<3 || points===phrase.length+1) {
-        document.getElementById("points").innerHTML = "Invalid word";
+      if (points===phrase.length+1) {
+        document.getElementById("points").innerHTML = "Word cannot continue the phrase";
+        points=0;
+      }
+      else if (userWord.length<3) {
+      	document.getElementById("points").innerHTML = "Word less than 3 letters";
+        points=0;
+      }
+      else if (usedWords.includes(userWord)) {
+      	document.getElementById("points").innerHTML = "Word already used";
         points=0;
       }
       else {
+      	usedWords.push(userWord);
       	document.getElementById("points").innerHTML = "+"+points+" pts";
         phrase+=userWord.substring(points);
       	totalPoints+=points;
