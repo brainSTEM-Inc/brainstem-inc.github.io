@@ -9,7 +9,7 @@
     <button class="button" onclick="location.href='game.html';">Game</button>
     
     <h1>Continue the Phrase</h1>
-    <p>Starting word is "aquitard".</p>
+    <!--<p>Starting word is "aquitard".</p>-->
     <input type="text" pattern="abcdefghijklmnopqrstuvwxyz" id="userWord" value="">
     <button id="addButton" onclick="startPhrase()">Start</button>
     <button onclick="editPhrase()">Edit</button>
@@ -27,7 +27,7 @@
         var points=0;
         phrase+=userWord;
         //document.getElementById("newPhrase").innerHTML = phrase;
-        document.getElementById("points").innerHTML = "+"+points+" pts";
+        //document.getElementById("points").innerHTML = "+"+points+" pts";
         document.getElementById("totalPoints").innerHTML = "Total points: "+totalPoints+" pts";
         document.getElementById("userWord").value="";
         for (let i = 0; i < phrase.length; i++) {
