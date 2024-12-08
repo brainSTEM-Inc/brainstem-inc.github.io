@@ -63,7 +63,7 @@
       	points+=1;
       }
       //document.getElementById("newPhrase").innerHTML = phrase;
-      if (points===phrase.length+1) {
+      if (points===phrase.length+1 || userWord.length===points) {
         document.getElementById("points").innerHTML = "Word cannot continue the phrase";
         points=0;
       }
