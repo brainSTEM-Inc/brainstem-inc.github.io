@@ -25,19 +25,24 @@
       if (!hasStarted) {
       	var userWord = document.getElementById("userWord").value;
         var points=0;
-        phrase+=userWord;
-        //document.getElementById("newPhrase").innerHTML = phrase;
-        //document.getElementById("points").innerHTML = "+"+points+" pts";
-        document.getElementById("totalPoints").innerHTML = "Total points: "+totalPoints+" pts";
-        document.getElementById("userWord").value="";
-        for (let i = 0; i < phrase.length; i++) {
-          let x = document.createElement("BUTTON");
-          let t = document.createTextNode(phrase.charAt(i));
-          x.appendChild(t);
-          document.body.appendChild(x)
+        if (userWord.length<3) {
+        	document.getElementById("points").innerHTML = "Invalid word";
         }
-        hasStarted=true;
-        document.getElementById("addButton").innerHTML = "Add";
+        else {
+          phrase+=userWord;
+          //document.getElementById("newPhrase").innerHTML = phrase;
+          //document.getElementById("points").innerHTML = "+"+points+" pts";
+          document.getElementById("totalPoints").innerHTML = "Total points: "+totalPoints+" pts";
+          document.getElementById("userWord").value="";
+          for (let i = 0; i < phrase.length; i++) {
+            let x = document.createElement("BUTTON");
+            let t = document.createTextNode(phrase.charAt(i));
+            x.appendChild(t);
+            document.body.appendChild(x)
+          }
+          hasStarted=true;
+          document.getElementById("addButton").innerHTML = "Add";
+        }
       }
       else {
       	addtoPhrase();
@@ -47,11 +52,11 @@
     function addtoPhrase() {
       var userWord = document.getElementById("userWord").value;
       var points=3;
-      while (points<phrase.length && phrase.substring(phrase.length-points)!==userWord.substring(0,points)) {
+      while (userWord.length>=3 && points<=phrase.length && phrase.substring(phrase.length-points)!==userWord.substring(0,points)) {
       	points+=1;
       }
       //document.getElementById("newPhrase").innerHTML = phrase;
-      if (points===phrase.length) {
+      if (userWord.length<3 || points===phrase.length+1) {
         document.getElementById("points").innerHTML = "Invalid word";
         points=0;
       }
