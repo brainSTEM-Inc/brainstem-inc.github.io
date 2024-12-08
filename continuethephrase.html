@@ -47,22 +47,27 @@
     function addtoPhrase() {
       var userWord = document.getElementById("userWord").value;
       var points=3;
-      while (phrase.substring(phrase.length-points)!==userWord.substring(0,points)) {
+      while (points<phrase.length && phrase.substring(phrase.length-points)!==userWord.substring(0,points)) {
       	points+=1;
       }
-      phrase+=userWord.substring(points);
-      totalPoints+=points;
       //document.getElementById("newPhrase").innerHTML = phrase;
-      document.getElementById("points").innerHTML = "+"+points+" pts";
-      document.getElementById("totalPoints").innerHTML = "Total points: "+totalPoints+" pts";
-      document.getElementById("userWord").value="";
-      for (let i = 0; i < userWord.length-points; i++) {
-        let x = document.createElement("BUTTON");
-        let t = document.createTextNode(userWord.charAt(points+i));
-        x.appendChild(t);
-        document.body.appendChild(x);
-	  }
-  	
+      if (points===phrase.length) {
+        document.getElementById("points").innerHTML = "Invalid word";
+        points=0;
+      }
+      else {
+      	document.getElementById("points").innerHTML = "+"+points+" pts";
+        phrase+=userWord.substring(points);
+      	totalPoints+=points;
+        document.getElementById("totalPoints").innerHTML = "Total points: "+totalPoints+" pts";
+        document.getElementById("userWord").value="";
+        for (let i = 0; i < userWord.length-points; i++) {
+          let x = document.createElement("BUTTON");
+          let t = document.createTextNode(userWord.charAt(points+i));
+          x.appendChild(t);
+          document.body.appendChild(x);
+        }
+  	  }
     }
     function checkWord() {
     }
