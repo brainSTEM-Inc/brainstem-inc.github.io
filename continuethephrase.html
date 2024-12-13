@@ -12,6 +12,7 @@
     <!--<p>Starting word is "aquitard".</p>-->
     <input type="text" pattern="abcdefghijklmnopqrstuvwxyz" id="userWord" value="">
     <button id="addButton" onclick="startPhrase()">Start</button>
+    
     <button onclick="editPhrase()">Edit</button>
     <p id="newPhrase"></p>
     <p id="points"></p>
@@ -22,6 +23,14 @@
     var totalPoints = 0;
     var hasStarted=false;
     const usedWords=[];
+    
+    var userWordEnter = document.getElementById("userWord");
+	userWordEnter.addEventListener("keydown", function (ctpEnter) {
+    	if (ctpEnter.code === "Enter") {  //checks whether the pressed key is "Enter"
+        	startPhrase();
+    	}
+	});
+    
     function startPhrase() {
       if (!hasStarted) {
       	var userWord = document.getElementById("userWord").value;
