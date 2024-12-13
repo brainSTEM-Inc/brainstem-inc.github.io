@@ -43,9 +43,11 @@
           document.getElementById("userWord").value="";
           for (let i = 0; i < phrase.length; i++) {
             let x = document.createElement("BUTTON");
+            x.setAttribute("id","letterButton"+i);
             let t = document.createTextNode(phrase.charAt(i));
             x.appendChild(t);
             document.body.appendChild(x);
+            document.getElementById("letterButton"+i).disabled = true;
           }
           hasStarted=true;
           document.getElementById("addButton").innerHTML = "Add";
@@ -84,9 +86,12 @@
         document.getElementById("userWord").value="";
         for (let i = 0; i < userWord.length-points; i++) {
           let x = document.createElement("BUTTON");
+          let letterIndex=phrase.length-userWord.length+points+i;
+          x.setAttribute("id","letterButton"+letterIndex);
           let t = document.createTextNode(userWord.charAt(points+i));
           x.appendChild(t);
           document.body.appendChild(x);
+          document.getElementById("letterButton"+letterIndex).disabled = true;
         }
   	  }
     }
