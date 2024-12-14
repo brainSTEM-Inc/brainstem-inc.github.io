@@ -33,7 +33,7 @@
     
     function startPhrase() {
       if (!hasStarted) {
-      	var userWord = document.getElementById("userWord").value;
+      	var userWord = document.getElementById("userWord").value.toLowerCase();
         var points=0;
         if (userWord.length<3) {
           document.getElementById("points").innerHTML = "Word less than 3 letters";
@@ -68,7 +68,7 @@
     }
 
     function addtoPhrase() {
-      var userWord = document.getElementById("userWord").value;
+      var userWord = document.getElementById("userWord").value.toLowerCase();
       var points=3;
       while (!(usedWords.includes(userWord)) && userWord.length>=3 && points<=phrase.length && phrase.substring(phrase.length-points)!==userWord.substring(0,points)) {
       	points+=1;
