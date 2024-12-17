@@ -13,7 +13,7 @@
     <input type="text" pattern="abcdefghijklmnopqrstuvwxyz" id="userWord" value="">
     <button id="addButton" onclick="startPhrase()">Start</button>
     
-    <button onclick="editPhrase()">Edit</button>
+    <button id="editButton" onclick="editPhrase()">Edit</button>
     <p id="newPhrase"></p>
     <p id="points"></p>
     <p id="totalPoints"></p>
@@ -109,6 +109,22 @@
     function getWord() {
     }
     function editPhrase() {
+    	if (document.getElementById("editButton").innerHTML == "Cancel") {			 
+		for (let i = 0; i < phrase.length; i++) {
+			document.getElementById("letterButton"+i).disabled =true;
+		}
+		document.getElementById("addButton").innerHTML = "Add";
+		document.getElementById("addButton").disabled = false;
+		document.getElementById("editButton").innerHTML = "Edit";
+        }
+        else {
+          for (let i = 0; i < phrase.length; i++) {
+              document.getElementById("letterButton"+i).disabled =false;
+          }
+          document.getElementById("addButton").innerHTML = "Change";
+          document.getElementById("addButton").disabled =true;
+          document.getElementById("editButton").innerHTML = "Cancel";
+        }
     }
     </script>
     
