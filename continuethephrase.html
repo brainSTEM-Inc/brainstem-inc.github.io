@@ -23,10 +23,10 @@
     var totalPoints = 0;
     var hasStarted=false;
     const usedWords=[];
-    
+    var changeIndex=-1;
     var userWordEnter = document.getElementById("userWord");
 	userWordEnter.addEventListener("keydown", function (ctpEnter) {
-    	if (ctpEnter.code === "Enter") {  //checks whether the pressed key is "Enter"
+    	if (ctpEnter.code === "Enter" && (document.getElementById("editButton").innerHTML == "Edit" || changeIndex!=-1)) {  //checks whether the pressed key is "Enter"
         	startPhrase();
     	}
 	});
@@ -57,13 +57,35 @@
             x.appendChild(t);
             document.body.appendChild(x);
             document.getElementById("letterButton"+i).disabled = true;
+            document.getElementById("letterButton"+i).onclick = function() {
+              document.getElementById("ctpInstructions").innerHTML = "Change "+phrase.substring(i,i+1)+" to ?";
+              document.getElementById("addButton").disabled = false;
+              changeIndex=i;
+          	};
           }
           hasStarted=true;
           document.getElementById("addButton").innerHTML = "Add";
         }
       }
       else {
-      	addtoPhrase();
+      	if (document.getElementById("editButton").innerHTML == "Cancel") {
+        	var newLetter=document.getElementById("userWord").value.toLowerCase();
+            if (newLetter.length!=1) {
+            	document.getElementById("points").innerHTML = "Must change to a letter";
+            }
+            else if (newLetter==phrase.substring(changeIndex,changeIndex+1)) {
+            	document.getElementById("points").innerHTML = "Change to a different letter";
+            }
+            else {
+              let temp=phrase.substring(0,changeIndex)+newLetter+phrase.substring(changeIndex+1,phrase.length);
+              phrase=temp;
+              document.getElementById("letterButton"+changeIndex).innerHTML = newLetter;
+              restore();
+            }
+        }
+		else {      	
+        	addtoPhrase();
+      	}
       }
     }
 
@@ -101,6 +123,11 @@
           x.appendChild(t);
           document.body.appendChild(x);
           document.getElementById("letterButton"+letterIndex).disabled = true;
+          document.getElementById("letterButton"+letterIndex).onclick = function() {
+          	document.getElementById("ctpInstructions").innerHTML = "Change "+phrase.substring(letterIndex,letterIndex+1)+" to ?";
+            document.getElementById("addButton").disabled = false;
+            changeIndex=letterIndex;
+          };
         }
   	  }
     }
@@ -110,22 +137,30 @@
     }
     function editPhrase() {
     	if (document.getElementById("editButton").innerHTML == "Cancel") {			 
-		for (let i = 0; i < phrase.length; i++) {
-			document.getElementById("letterButton"+i).disabled =true;
-		}
-		document.getElementById("addButton").innerHTML = "Add";
-		document.getElementById("addButton").disabled = false;
-		document.getElementById("editButton").innerHTML = "Edit";
+			restore();
         }
         else {
           for (let i = 0; i < phrase.length; i++) {
               document.getElementById("letterButton"+i).disabled =false;
           }
-          document.getElementById("addButton").innerHTML = "Change";
+          document.getElementById("addButton").innerHTML = "Save";
           document.getElementById("addButton").disabled =true;
           document.getElementById("editButton").innerHTML = "Cancel";
+          document.getElementById("ctpInstructions").innerHTML = "Click on the letter you want to change in the current phrase.";
+          changeIndex=-1;
         }
     }
+    function restore() {
+    	document.getElementById("userWord").value="";
+    	for (let i = 0; i < phrase.length; i++) {
+			document.getElementById("letterButton"+i).disabled =true;
+		}
+		document.getElementById("addButton").innerHTML = "Add";
+		document.getElementById("addButton").disabled = false;
+		document.getElementById("editButton").innerHTML = "Edit";
+        document.getElementById("ctpInstructions").innerHTML = "Enter a previously unused word sharing its first n letters with the last n letters of the current phrase, n>=3.";
+        changeIndex=-1;
+     }
     </script>
     
   </body>
