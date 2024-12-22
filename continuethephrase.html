@@ -2,6 +2,38 @@
 <html>
   <head>
     <link rel="stylesheet" href="style.css">
+    <style>
+    .ctpbutton {
+    background-color: dodgerblue;    
+    /*padding: 1px 10px;*/
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+	}
+    .ctpdisabled {
+    opacity: 0.6;
+	}
+    .ctpletterbutton {
+    background-color: white;
+    border: 0.5px solid dodgerblue;
+    color: dodgerblue;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	}
+    .ctpletterbutton:hover:enabled {
+    background-color: dodgerblue;
+    color: white;
+	}
+    .ctpclicked {
+    background-color: dodgerblue;
+    color: white;
+	}
+	</style>
   </head>  
   <body style="background-color: white;">
     <button class="button" onclick="location.href='index.html';">Home</button>
@@ -11,9 +43,9 @@
     <h1>Continue the Phrase</h1>
     <p id="ctpInstructions">Enter a previously unused word sharing its first n letters with the last n letters of the current phrase, n>=3.</p>
     <input type="text" pattern="abcdefghijklmnopqrstuvwxyz" id="userWord" value="">
-    <button id="addButton" onclick="startPhrase()">Start</button>
+    <button class="ctpbutton" id="addButton" onclick="startPhrase()">Start</button>
     
-    <button id="editButton" onclick="editPhrase()">Edit</button>
+    <button class="ctpbutton ctpdisabled" id="editButton" onclick="editPhrase()" disabled>Edit</button>
     <p id="newPhrase"></p>
     <p id="points"></p>
     <p id="totalPoints"></p>
@@ -26,7 +58,7 @@
     var changeIndex=-1;
     var userWordEnter = document.getElementById("userWord");
 	userWordEnter.addEventListener("keydown", function (ctpEnter) {
-    	if (ctpEnter.code === "Enter" && (document.getElementById("editButton").innerHTML == "Edit" || changeIndex!=-1)) {  //checks whether the pressed key is "Enter"
+    	if (ctpEnter.code === "Enter" && (document.getElementById("editButton").innerHTML == "Edit" || changeIndex!=-1)) {
         	startPhrase();
     	}
 	});
@@ -53,6 +85,7 @@
           for (let i = 0; i < phrase.length; i++) {
             let x = document.createElement("BUTTON");
             x.setAttribute("id","letterButton"+i);
+            x.setAttribute("class","ctpletterbutton");
             let t = document.createTextNode(phrase.charAt(i));
             x.appendChild(t);
             document.body.appendChild(x);
@@ -60,11 +93,18 @@
             document.getElementById("letterButton"+i).onclick = function() {
               document.getElementById("ctpInstructions").innerHTML = "Change "+phrase.substring(i,i+1)+" to ?";
               document.getElementById("addButton").disabled = false;
+              for (let i = 0; i < phrase.length; i++) {
+              document.getElementById("letterButton"+i).classList.remove("ctpclicked");
+          	  }
+              this.classList.add("ctpclicked");
               changeIndex=i;
           	};
           }
           hasStarted=true;
           document.getElementById("addButton").innerHTML = "Add";
+          document.getElementById("editButton").disabled = false;
+          document.getElementById("editButton").classList.remove("ctpdisabled");
+          
         }
       }
       else {
@@ -122,11 +162,17 @@
           let t = document.createTextNode(userWord.charAt(points+i));
           x.appendChild(t);
           document.body.appendChild(x);
-          document.getElementById("letterButton"+letterIndex).disabled = true;
+          x.disabled = true;
+          x.setAttribute("class","ctpletterbutton");
           document.getElementById("letterButton"+letterIndex).onclick = function() {
           	document.getElementById("ctpInstructions").innerHTML = "Change "+phrase.substring(letterIndex,letterIndex+1)+" to ?";
             document.getElementById("addButton").disabled = false;
+            document.getElementById("addButton").classList.remove("ctpdisabled");
             changeIndex=letterIndex;
+            for (let i = 0; i < phrase.length; i++) {
+              document.getElementById("letterButton"+i).classList.remove("ctpclicked");
+          	}
+            this.classList.add("ctpclicked");
           };
         }
   	  }
@@ -142,9 +188,11 @@
         else {
           for (let i = 0; i < phrase.length; i++) {
               document.getElementById("letterButton"+i).disabled =false;
+              document.getElementById("letterButton"+i).classList.add("ctpclickable");
           }
           document.getElementById("addButton").innerHTML = "Save";
           document.getElementById("addButton").disabled =true;
+          document.getElementById("addButton").classList.add("ctpdisabled");
           document.getElementById("editButton").innerHTML = "Cancel";
           document.getElementById("ctpInstructions").innerHTML = "Click on the letter you want to change in the current phrase.";
           changeIndex=-1;
@@ -154,9 +202,12 @@
     	document.getElementById("userWord").value="";
     	for (let i = 0; i < phrase.length; i++) {
 			document.getElementById("letterButton"+i).disabled =true;
+            document.getElementById("letterButton"+i).classList.remove("ctpclickable");
+            document.getElementById("letterButton"+i).classList.remove("ctpclicked");
 		}
 		document.getElementById("addButton").innerHTML = "Add";
 		document.getElementById("addButton").disabled = false;
+        document.getElementById("addButton").classList.remove("ctpdisabled");
 		document.getElementById("editButton").innerHTML = "Edit";
         document.getElementById("ctpInstructions").innerHTML = "Enter a previously unused word sharing its first n letters with the last n letters of the current phrase, n>=3.";
         changeIndex=-1;
