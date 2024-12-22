@@ -93,7 +93,6 @@
             document.getElementById("letterButton"+i).onclick = function() {
               editPhrase();
               document.getElementById("ctpInstructions").innerHTML = "Change "+phrase.substring(i,i+1)+" to ?";
-              document.getElementById("addButton").disabled = false;
               for (let i = 0; i < phrase.length; i++) {
               document.getElementById("letterButton"+i).classList.remove("ctpclicked");
           	  }
@@ -168,7 +167,6 @@
           document.getElementById("letterButton"+letterIndex).onclick = function() {
           	editPhrase();
           	document.getElementById("ctpInstructions").innerHTML = "Change "+phrase.substring(letterIndex,letterIndex+1)+" to ?";
-            document.getElementById("addButton").disabled = false;
             document.getElementById("addButton").classList.remove("ctpdisabled");
             changeIndex=letterIndex;
             for (let i = 0; i < phrase.length; i++) {
@@ -189,8 +187,6 @@
             document.getElementById("letterButton"+i).classList.remove("ctpclicked");
 		}
           document.getElementById("addButton").innerHTML = "Save";
-          document.getElementById("addButton").disabled =true;
-          document.getElementById("addButton").classList.add("ctpdisabled");
           document.getElementById("editButton").innerHTML = "Cancel";
           //document.getElementById("ctpInstructions").innerHTML = "Click on the letter you want to change in the current phrase.";
           changeIndex=-1;
@@ -202,6 +198,7 @@
             document.getElementById("letterButton"+i).classList.remove("ctpclicked");
 		}
 		document.getElementById("addButton").innerHTML = "Add";
+        document.getElementById("editButton").innerHTML = "Edit";
 		document.getElementById("addButton").disabled = false;
         document.getElementById("addButton").classList.remove("ctpdisabled");
 		document.getElementById("editButton").style.visibility = "hidden";
