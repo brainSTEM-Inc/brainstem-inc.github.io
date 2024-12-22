@@ -45,7 +45,7 @@
     <input type="text" pattern="abcdefghijklmnopqrstuvwxyz" id="userWord" value="">
     <button class="ctpbutton" id="addButton" onclick="startPhrase()">Start</button>
     
-    <button class="ctpbutton ctpdisabled" id="editButton" onclick="editPhrase()" disabled>Edit</button>
+    <button class="ctpbutton ctpdisabled" id="editButton" onclick="restore()" style="visibility:hidden;">Edit</button>
     <p id="newPhrase"></p>
     <p id="points"></p>
     <p id="totalPoints"></p>
@@ -89,8 +89,9 @@
             let t = document.createTextNode(phrase.charAt(i));
             x.appendChild(t);
             document.body.appendChild(x);
-            document.getElementById("letterButton"+i).disabled = true;
+            //document.getElementById("letterButton"+i).disabled = true;
             document.getElementById("letterButton"+i).onclick = function() {
+              editPhrase();
               document.getElementById("ctpInstructions").innerHTML = "Change "+phrase.substring(i,i+1)+" to ?";
               document.getElementById("addButton").disabled = false;
               for (let i = 0; i < phrase.length; i++) {
@@ -162,9 +163,10 @@
           let t = document.createTextNode(userWord.charAt(points+i));
           x.appendChild(t);
           document.body.appendChild(x);
-          x.disabled = true;
+          //x.disabled = true;
           x.setAttribute("class","ctpletterbutton");
           document.getElementById("letterButton"+letterIndex).onclick = function() {
+          	editPhrase();
           	document.getElementById("ctpInstructions").innerHTML = "Change "+phrase.substring(letterIndex,letterIndex+1)+" to ?";
             document.getElementById("addButton").disabled = false;
             document.getElementById("addButton").classList.remove("ctpdisabled");
@@ -182,33 +184,27 @@
     function getWord() {
     }
     function editPhrase() {
-    	if (document.getElementById("editButton").innerHTML == "Cancel") {			 
-			restore();
-        }
-        else {
+    	document.getElementById("editButton").style.visibility="visible";
           for (let i = 0; i < phrase.length; i++) {
-              document.getElementById("letterButton"+i).disabled =false;
-              document.getElementById("letterButton"+i).classList.add("ctpclickable");
-          }
+            document.getElementById("letterButton"+i).classList.remove("ctpclicked");
+		}
           document.getElementById("addButton").innerHTML = "Save";
           document.getElementById("addButton").disabled =true;
           document.getElementById("addButton").classList.add("ctpdisabled");
           document.getElementById("editButton").innerHTML = "Cancel";
-          document.getElementById("ctpInstructions").innerHTML = "Click on the letter you want to change in the current phrase.";
+          //document.getElementById("ctpInstructions").innerHTML = "Click on the letter you want to change in the current phrase.";
           changeIndex=-1;
-        }
     }
     function restore() {
     	document.getElementById("userWord").value="";
     	for (let i = 0; i < phrase.length; i++) {
-			document.getElementById("letterButton"+i).disabled =true;
-            document.getElementById("letterButton"+i).classList.remove("ctpclickable");
+			//document.getElementById("letterButton"+i).disabled =true;
             document.getElementById("letterButton"+i).classList.remove("ctpclicked");
 		}
 		document.getElementById("addButton").innerHTML = "Add";
 		document.getElementById("addButton").disabled = false;
         document.getElementById("addButton").classList.remove("ctpdisabled");
-		document.getElementById("editButton").innerHTML = "Edit";
+		document.getElementById("editButton").style.visibility = "hidden";
         document.getElementById("ctpInstructions").innerHTML = "Enter a previously unused word sharing its first n letters with the last n letters of the current phrase, n>=3.";
         changeIndex=-1;
      }
