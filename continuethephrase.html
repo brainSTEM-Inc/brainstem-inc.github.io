@@ -57,9 +57,12 @@
     const usedWords=[];
     var changeIndex=-1;
     var userWordEnter = document.getElementById("userWord");
+    window.addEventListener("keydown", function() {
+        document.getElementById("userWord").focus();
+    });
 	userWordEnter.addEventListener("keydown", function (ctpEnter) {
     	if (ctpEnter.code === "Enter" && (document.getElementById("editButton").innerHTML == "Edit" || changeIndex!=-1)) {
-        	startPhrase();
+            startPhrase();
     	}
 	});
     
@@ -190,6 +193,7 @@
           document.getElementById("editButton").innerHTML = "Cancel";
           //document.getElementById("ctpInstructions").innerHTML = "Click on the letter you want to change in the current phrase.";
           changeIndex=-1;
+          //document.getElementById("userWord").disabled = true;
     }
     function restore() {
     	document.getElementById("userWord").value="";
@@ -204,6 +208,7 @@
 		document.getElementById("editButton").style.visibility = "hidden";
         document.getElementById("ctpInstructions").innerHTML = "Enter a previously unused word sharing its first n letters with the last n letters of the current phrase, n>=3.";
         changeIndex=-1;
+        document.getElementById("userWord").disabled = false;
      }
     </script>
     
