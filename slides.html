@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+img {vertical-align: middle; width: 100%;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* Slide track */
+.slide-track {
+  display: flex;
+  transition: transform 0.6s ease;
+  width: 100%;
+}
+
+/* Individual slide */
+.slide {
+  min-width: 100%;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.3s ease;
+  user-select: none;
+  background-color: rgba(0,0,0,0.5);
+  border: none;
+}
+
+.next { right: 0; }
+.prev { left: 0; }
+
+.prev:hover, .next:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center">Multiple Slideshows</h2>
+
+<p>Slideshow 1:</p>
+<div class="slideshow-container">
+  <div class="slide-track" id="track1">
+    <div class="slide"><img src="img_nature_wide.jpg"></div>
+    <div class="slide"><img src="img_snow_wide.jpg"></div>
+    <div class="slide"><img src="img_mountains_wide.jpg"></div>
+  </div>
+  <button class="prev" onclick="moveSlide(-1, 0)">&#10094;</button>
+  <button class="next" onclick="moveSlide(1, 0)">&#10095;</button>
+</div>
+
+<p>Slideshow 2:</p>
+<div class="slideshow-container">
+  <div class="slide-track" id="track2">
+    <div class="slide"><img src="img_band_chicago.jpg"></div>
+    <div class="slide"><img src="img_band_la.jpg"></div>
+    <div class="slide"><img src="img_band_ny.jpg"></div>
+  </div>
+  <button class="prev" onclick="moveSlide(-1, 1)">&#10094;</button>
+  <button class="next" onclick="moveSlide(1, 1)">&#10095;</button>
+</div>
+
+<script>
+let currentIndex = [0, 0];
+const trackIds = ["track1", "track2"];
+const totalSlides = [3, 3]; // update if you add/remove slides
+
+function moveSlide(direction, slideshowNum) {
+  currentIndex[slideshowNum] += direction;
+
+  if (currentIndex[slideshowNum] < 0) {
+    currentIndex[slideshowNum] = totalSlides[slideshowNum] - 1;
+  }
+  if (currentIndex[slideshowNum] >= totalSlides[slideshowNum]) {
+    currentIndex[slideshowNum] = 0;
+  }
+
+  const track = document.getElementById(trackIds[slideshowNum]);
+  track.style.transform = `translateX(-${currentIndex[slideshowNum] * 100}%)`;
+}
+</script>
+
+</body>
+</html>
